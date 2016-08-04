@@ -8,6 +8,7 @@ Basically there are 3 data recorded.
 Is_new  (Y | N)
 First_action    (campaignid date-time utm_source utm_medium utm_campaign utm_content (option) )
 last_action    (campaignid date-time utm_source utm_medium utm_campaign utm_content (option) ) 
+
 You can create with new default supporter field or use question.
 For standard field. You’ll get data in fields with export supporter data. You’ll not able to get it via API. But for question it is easily to read those value via API but for export you’ll need to use transaction or hybrid? Export to be able to get it. I suggest to use question since it will make you easier to use API connect EN system with external platform.
 

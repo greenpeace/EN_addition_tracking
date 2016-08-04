@@ -30,8 +30,17 @@ First time set up process will need to.
 - Put all 3 question in form design (which may need to hide them use JS or CSS) *If you have better solution for this please share. 
 - All steps above you can try with different option to make sure it will match requirement. And please share what you think it is the best option.
 
-In build phase - question . If you put mouse pointer above question name you’ll see link something like https://e-activist.com/ea-account/action.campaigncontent.do?v=ques:Questions:obj&id=****QUESTION_ID*****
+## In build phase 
+- question . If you put mouse pointer above question name you’ll see link something like https://e-activist.com/ea-account/action.campaigncontent.do?v=ques:Questions:obj&id=****QUESTION_ID*****
+- add following js into html header
 
+```
+<script>
+ $(document).ready(function(){
+	$('#email').blur(function(){chkexist();});
+	});
+ </script>
+```
 You then can use ****QUESTION_ID***** in API call like this. Each question will have different ID and you also need your public token replaces in following URL.
 http://e-activist.com/ea-dataservice/data.service?service=EaSupporterQuestionResponse&token=****YOUR_TOKEN*******&contentType=json&questionId=****QUESTION_ID*****
 

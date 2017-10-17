@@ -17,32 +17,53 @@ It’s your choice.
 Sample data in first_action and last_action
 53761 2016-07-20T05:53:05.418Z pet1 email plastic recycle
 
-# Sample page.
+# Update script for page builder
+Page builder is new way of creating page in EN. It is a bit more user friendly but it is change the way of script programming. Form field has change their unique ID name. Question is no longer has unique ID. 
 
-http://act.greenpeace.org/ea-action/action?ea.campaign.id=53835&ea.client.id=1827&ea.campaign.mode=DEMO
+The script to add to your page is tracking_for_pb.js
 
-# Setting it up
-First time set up process will need to.
-- Create 3 question with type as “text” in build menu of EN. Named them as “is_new , first_action , last_action” (you can also use another name that make more sense to your work)
-- Once it is set up you can go with next step on using it in campaign page by
-- Put above js into html template or also able to put into external js file in EN library and add to html
-- Add question created in preparation process in build phase
-- Put all 3 question in form design (which may need to hide them use JS or CSS) *If you have better solution for this please share. 
-- All steps above you can try with different option to make sure it will match requirement. And please share what you think it is the best option.
+There are functions in this script. 
+- function getParameterByName(name) 
+- function chkexist()
+- function get_country()
+- function getprovince(c_id)
+- $(document).ready(function() 
 
-## In build phase 
-- question . If you put mouse pointer above question name you’ll see link something like https://e-activist.com/ea-account/action.campaigncontent.do?v=ques:Questions:obj&id=****QUESTION_ID*****
-- add following js into html header
+function getParameterByName(name)  
+This function use for parse page url for utm tracking parameter. These parameter will be included in data store in  first_action and last_action. 
 
+function chkexist()
+Is main function to check if email address is already exist in EN and put correct information into is_new , first_action and last_action. Mainly it will create ajax call to EN service "SupporterData" with email address as parameter to see if it is already in EN database. If it is already exist then the first_action will be blank and is_new will be "n". Otherwise it will put this page detail into first_action too. 
+
+function get_country()
+Will send supporter ip address to external server(maintain by greenpeace) to determine country/region of supporter and return back option list of country/region. 
+
+function getprovince(c_id)
+This is to call when there is change in country field. eg: select other country than what geoip give. It will get new list of region and replace in region field. 
+
+$(document).ready(function()
+This one is main function to process all of above. You can customize here. It is also attach jqueryui.datepicker to date of birth field. Make it easier for supporter to choose their DOB. 
+
+In summary. There are 3 main function in this script. 
+- Track new/existing supporter and tag with campaign id plus some other tracking parameter. 
+
+To add to your page. 
+- Get script from
+https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1827/common_2.js?v=1508220947000
+- Add 3 questions , is_new , first_action , last_action in your page and hide them with css. 
+- get their fields name from source code
+- replace in your common_2.js
 ```
-<script>
- $(document).ready(function(){
-	$('#email').blur(function(){chkexist();});
-	});
- </script>
+var last_action = '[name="supporter.questions.3884"]';
+var first_action = '[name="supporter.questions.3871"]';
+var is_new = '[name="supporter.questions.3881"]';
 ```
-You then can use ****QUESTION_ID***** in API call like this. Each question will have different ID and you also need your public token replaces in following URL.
-http://e-activist.com/ea-dataservice/data.service?service=EaSupporterQuestionResponse&token=****YOUR_TOKEN*******&contentType=json&questionId=****QUESTION_ID*****
+on line 41-43 with your question field name. (change numbers)
+- replace en_token="**xxxxxxxxxxxxxxxxxxxxxx**"; on line 45 with your public token
+- Upload js file to your EN library
+- add it to your html template. like  <script src="//aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1827/common_2.js?v=1508220947000"></script>
 
-Don’t forget to replace token with your own public token
+In case you use country and region in your page you also need to add them as "select" field type with blank option. 
+
+All are set and ready.
 

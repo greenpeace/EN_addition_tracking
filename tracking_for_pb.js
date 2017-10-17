@@ -9,7 +9,6 @@ Description
 
 To use
  - add variable en_token="xxxxxxxxxxxxx"; in your script block before call
- - add var campaignid="xxxxxx"; before script block
  - edit 
  var last_action = '[name="supporter.questions.3884"]';
  var first_action = '[name="supporter.questions.3871"]';
@@ -25,7 +24,7 @@ document.writeln('<script src="//aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c
 document.writeln('<script src="//aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1827/jquery-ui.1.12.0-min.js?v=1507690726000"></script>');
 document.writeln('<link rel="stylesheet" href="//aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1827/jquery-ui.smoothness.css?v=1464770874000">');
 
-
+var campaignid=pageJson['campaignId'];
 
 function getParameterByName(name) {
   name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");

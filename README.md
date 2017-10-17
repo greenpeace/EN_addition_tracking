@@ -67,3 +67,4 @@ In case you use country and region in your page you also need to add them as "se
 
 All are set and ready.
 
+You can get detailed list on 3 new question using demo code from https://github.com/noomkrub/EN_question_extract.

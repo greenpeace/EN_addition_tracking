@@ -61,7 +61,8 @@ var is_new = '[name="supporter.questions.3881"]';
 on line 41-43 with your question field name. (change numbers)
 - replace en_token="**xxxxxxxxxxxxxxxxxxxxxx**"; on line 45 with your public token
 - Upload js file to your EN library
-- add it to your html template. like  <script src="//aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1827/common_2.js?v=1508220947000"></script>
+- add it to your html template. like  
+```<script src="//aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1827/common_2.js?v=1508220947000"></script>```
 
 In case you use country and region in your page you also need to add them as "select" field type with blank option. 
 

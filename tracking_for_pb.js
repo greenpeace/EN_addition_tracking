@@ -42,6 +42,7 @@ var last_action = '[name="supporter.questions.3884"]';
 var first_action = '[name="supporter.questions.3871"]';
 var is_new = '[name="supporter.questions.3881"]';
 
+var en_token="xxxxxxxxxxxxxxxxxxxxxxxxxx";
 var d = new Date();
 var n = d.toISOString(); 
 

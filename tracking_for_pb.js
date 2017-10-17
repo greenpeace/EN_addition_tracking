@@ -6,6 +6,7 @@ Description
 - To put campaign ID , date time and utm tracking parameter into first_action If it is new supporter
 - Checking process occure when fading from email field.
 - Add date picker to date of birth field
+- Add country/province selection and geoip function
 
 To use
  - add variable en_token="xxxxxxxxxxxxx"; in your script block before call
@@ -13,11 +14,9 @@ To use
  var last_action = '[name="supporter.questions.3884"]';
  var first_action = '[name="supporter.questions.3871"]';
  var is_new = '[name="supporter.questions.3881"]';
- - put your correct question ID in line 43-45
-To complete
-- Add country/province selection and geoip function
-- To get campaignID automatically from page source code(addition by EN) 
+ - put your correct question ID in line 40-42
 
+Once all set you can upload to EN library then use it again and again.
 */
 
 document.writeln('<script src="//aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1827/jquery-1.11.3.min.js?v=1435983049000"></script>');
@@ -67,9 +66,34 @@ function chkexist() {
   });
 }
 
-
+function get_country(){
+    var url='https://gpsea.space/Tools/world_province_2/index_c.php' ;
+	$.ajax({
+  		url:  url,
+  		dataType: 'jsonp',
+  		success: function (data) {
+  			// add option list to country field
+  			$("#en__field_supporter_country" ).empty();
+  			$("#en__field_supporter_country" ).append(data['list']);
+  			$("#en__field_supporter_region" ).empty();
+  			$("#en__field_supporter_region" ).append(data['province']);
+  			}  
+		});
+}
+function getprovince(c_id){
+	var url='https://gpsea.space/Tools/world_province_2/province.php?m=province&country_code='+c_id ;
+	$.ajax({
+  		url:  url,
+  		dataType: 'jsonp',
+  		success: function (data) {
+  			$("#en__field_supporter_region" ).empty();
+			$("#en__field_supporter_region" ).append(data['province']);
+  			}  
+		});
+	}
 
 $(document).ready(function() {
+	get_country();
 	$(is_new).attr("placeholder", "OFFICE USE ONLY: DO NOT fill this out").css("display", "none");
 	$(first_action).attr("placeholder", "OFFICE USE ONLY: DO NOT fill this out").css("display", "none");
 	$(last_action).attr("placeholder", "OFFICE USE ONLY: DO NOT fill this out").css("display", "none");
@@ -86,8 +110,6 @@ $(document).ready(function() {
 	dateFormat: 'yy-mm-dd',
 	yearRange: "-100:+0"
 	});
-
-	
 });
 
 

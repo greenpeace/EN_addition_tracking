@@ -62,6 +62,6 @@ If you will use country and region in your page, you also need to add these fiel
 
 All are set and ready.
 
-Updated script for page builder: This script was originally built for Engaging Network’s legacy campaign builder, which will be phased out in 2018. As such, the script is now updated for “Page Builder” the new way of creating campaigns in EN. It is a bit more user friendly but has required some changes in approach to script programming. Unique IDs for form fields are now found in the name attribute, while questions no longer have unique IDs.
+*Updated script for page builder: This script was originally built for Engaging Network’s legacy campaign builder, which will be phased out in 2018. As such, the script is now updated for “Page Builder” the new way of creating campaigns in EN. It is a bit more user friendly but has required some changes in approach to script programming. Unique IDs for form fields are now found in the name attribute, while questions no longer have unique IDs*
 
 You can get detailed list on 3 new question using demo code from https://github.com/noomkrub/EN_question_extract.

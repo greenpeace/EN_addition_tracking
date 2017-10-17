@@ -35,12 +35,12 @@ https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.co
 - get their fields name from source code
 - replace in your common_2.js
 ```
-var last_action = '[name="supporter.questions.3884"]';
-var first_action = '[name="supporter.questions.3871"]';
-var is_new = '[name="supporter.questions.3881"]';
+var last_action = '[name="supporter.questions.**3884**"]';
+var first_action = '[name="supporter.questions.**3871**"]';
+var is_new = '[name="supporter.questions.**3881**"]';
 ```
 on line 41-43 with your question field name. (change numbers)
-- replace en_token="xxxxxxxxxxxxxxxxxxxxxx"; on line 45 with your public token
+- replace en_token="**xxxxxxxxxxxxxxxxxxxxxx**"; on line 45 with your public token
 - Upload js file to your EN library
 - add it to your html template. like  <script src="//aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1827/common_2.js?v=1508220947000"></script>
 
